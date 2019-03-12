@@ -11,21 +11,17 @@ const image = require('./controllers/image.js')
 const db = knex({
   client: 'pg',
   connection: {
-     host : '',
-    user : 'postgres',
-    password : 'xb1RL2-',
-    database : 'smartbrain'
+	connectionString: process.env.DATABASE_URL,
+  	ssl: true,
   }
 });
 
 const app = express()
-app.use(bodyParser.json())
 app.use(cors())
+app.use(bodyParser.json())
 
-app.get ('/', (req,res)=>{
-	res.send("Im here and running!")
-})
 
+app.get ('/', (req,res)=>{res.send("Im here and running!")})
 app.post('/signin',(req, res)=>{signin.handleSignin(req, res, db, bcrypt)})
 app.post('/register', (req, res)=>{register.handleRegister(req, res, db, bcrypt)})
 app.get('/profile/:id', (req, res)=>{profile.handleProfile(req, res, db)})
