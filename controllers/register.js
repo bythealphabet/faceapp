@@ -14,7 +14,6 @@
 			.into('login')
 			.returning('email')
 			.then(loginEmail =>{
-				console.log(trx)
 				return ('users')
 				.returning('*')
 				.insert({	
