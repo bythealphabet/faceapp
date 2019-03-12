@@ -8,18 +8,21 @@ const signin = require('./controllers/signin.js')
 const profile = require('./controllers/profile.js')
 const image = require('./controllers/image.js')
 
+const myDB = 'postgres://ccmbzxmwebvnvi:d2bfc18a9fa4681912f49ee928e6f8d8f9c7304b4a7be5e355810aff5cb36a77@ec2-75-101-133-29.compute-1.amazonaws.com:5432/dbmcofg07rqgur'
+
 const db = knex({
-  client: 'pg',
-	connectionString: process.env.DATABASE_URL,
-  	ssl: true,
+  production: {
+    client: 'pg',
+    connection: myDB
 });
 
 const app = express()
-app.use(cors())
 app.use(bodyParser.json())
+app.use(cors())
 
-
-app.get ('/', (req,res)=>{res.send("Im here and running!")})
+app.get ('/', (req,res)=>{
+	res.send("Im here and running!")
+})
 
 app.post('/signin',(req, res)=>{signin.handleSignin(req, res, db, bcrypt)})
 app.post('/register', (req, res)=>{register.handleRegister(req, res, db, bcrypt)})
