@@ -11,7 +11,7 @@ const image = require('./controllers/image.js')
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'postgresql-fluffy-17156',
     user : 'postgres',
     password : 'xb1RL2-',
     database : 'smartbrain'
@@ -35,3 +35,5 @@ app.post('/imageurl', (req, res)=>{image.handleApiCall(req, res)})
 app.listen (process.env.PORT || 3000, ()=>{
 	console.log(`app is running on port ${process.env.PORT}`)
 })
+
+
