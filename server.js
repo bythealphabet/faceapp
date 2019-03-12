@@ -13,13 +13,13 @@ const db_url = 'postgres://ccmbzxmwebvnvi:d2bfc18a9fa4681912f49ee928e6f8d8f9c730
 const db = knex({
   client: 'pg',
   connection: {
-    connectionString: db_url,
+    connection: db_url,
   },
   production: {
     client: 'postgresql',
-    connectionString: {
+    connection: {
       database: db_url,
-    },
+    }},
     ssl: true
 });
 
