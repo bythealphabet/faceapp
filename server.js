@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt-nodejs')
 const { Client, Pool } = require('pg')
 const register = require('./controllers/register.js')
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 3000
 // const signin = require('./controllers/signin.js')
 // const profile = require('./controllers/profile.js')
 // const image = require('./controllers/image.js')
@@ -61,6 +61,6 @@ app.post('/register', (req, res)=>{register.handleRegister(req, res, pool, bcryp
 
   	// app.post('/register', )
 
-app.listen(PORT || 3000 ()=>{
+app.listen(PORT, ()=>{
 	console.log(`app is running on port ${PORT}`)
 })
