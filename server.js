@@ -24,6 +24,7 @@ const db = new Client({
   ssl: true,
 });
 
+
 // const db = new Client({
 //   user: 'postgres',
 //   host: '127.0.0.1',
@@ -38,7 +39,7 @@ app.use(bodyParser.json())
 
 
 
-app.get ('/', (req,res)=>{'Im in'})
+app.get('/', (req,res)=>{'Im in'})
 // app.post('/signin',(req, res)=>{signin.handleSignin(req, res, db, bcrypt)})
 app.post('/register', (req, res)=>{register.handleRegister(req, res, pool, bcrypt)})
 // app.get('/profile/:id', (req, res)=>{profile.handleProfile(req, res, db)})
@@ -59,6 +60,6 @@ app.post('/register', (req, res)=>{register.handleRegister(req, res, pool, bcryp
 
   	// app.post('/register', )
 
-app.listen(3000, ()=>{
-	console.log(`app is running on port 3000`)
+app.listen(process.env.PORT || 3000 ()=>{
+	console.log(`app is running on port ${process.env.PORT}`)
 })
