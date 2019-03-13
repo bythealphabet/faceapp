@@ -11,6 +11,7 @@
 				hash: hash,
 				email: email
 			})
+			.catch(err => res.status(400).json('unable to register'))
 			.into('login')
 			.returning('email')
 			.then(loginEmail =>{
