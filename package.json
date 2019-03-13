@@ -1,8 +1,8 @@
 {
-  "name": "smart-brain-api",
+  "name": "smartserver",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
@@ -14,7 +14,6 @@
     "body-parser": "^1.18.3",
     "clarifai": "^2.9.0",
     "express": "^4.16.4",
-    "knex": "^0.16.3",
     "pg": "^7.8.2"
   },
   "devDependencies": {
