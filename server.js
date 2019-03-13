@@ -40,7 +40,7 @@ app.use(bodyParser.json())
 
 
 
-app.get('/', (req,res)=>{'Im in'})
+app.get('/', (req,res)=>{res.send('Im in YUUPPIII!!!')})
 // app.post('/signin',(req, res)=>{signin.handleSignin(req, res, db, bcrypt)})
 app.post('/register', (req, res)=>{register.handleRegister(req, res, pool, bcrypt)})
 // app.get('/profile/:id', (req, res)=>{profile.handleProfile(req, res, db)})
@@ -61,4 +61,6 @@ app.post('/register', (req, res)=>{register.handleRegister(req, res, pool, bcryp
 
   	// app.post('/register', )
 
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
+app.listen(PORT || 3000 ()=>{
+	console.log(`app is running on port ${PORT}`)
+})
