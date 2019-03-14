@@ -22,7 +22,6 @@
 		    const userData = await client.query(insertUser)
 			await res.json(userData.rows[0])
 
-			console.log(userData.rows[0])
 		    await client.query('COMMIT')
 		  } catch (e) {
 		    await client.query('ROLLBACK')
