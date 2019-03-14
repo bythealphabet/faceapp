@@ -15,13 +15,16 @@ const handleApiCall = (req, res)=>{
 
 
 const handleImage = (req, res, db)=>{
-
 	const { id } = req.body
-	db('users').where('id', '=', id)
-	.increment('entries', 1)
-	.returning('entries')
-	.then(entries=>{
-		res.json(entries[0])
+
+	const updateEntriesQuery = {
+    text: 'UPDATE users SET entries = entries + 1 WHERE id = $1 RETURNING entries',
+    values: [id] ,
+  	};
+
+	db.query(updateEntriesQuery)
+	.then(data=>{
+		res.json(data.rows[0].entries)
 	})
 	.catch(err =>{
 		res.status(400).json('unable to get entries')
