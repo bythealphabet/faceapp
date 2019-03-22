@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcrypt-nodejs')
+const cors = require('cors')
 const { Client, Pool } = require('pg')
 const PORT = process.env.PORT || 3000
 
@@ -23,6 +24,7 @@ db.connect()
 
 const app = express()
 app.use(bodyParser.json())
+app.use(cors())
 
 app.get('/', (req,res)=>{res.send('Im in YUUPPIII!!!')})
 app.post('/signin',(req, res)=>{signin.handleSignin(req, res, db, bcrypt)})
